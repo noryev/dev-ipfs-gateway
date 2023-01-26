@@ -11,6 +11,7 @@ This configuration is not recommended for any production enviroment, just as a t
 - configure your networks inbound and outbound rules within your EC2 Security Group(dont mess this up lol)
 - install IPFS(Kubo is what I used)
 - get your services setup(run the ipfs daemon and check the badbits registry on start automatically)
+    you will also need to setup a service for gunicorn(to connect your networking from the EC2 server to the outside wrld)
 - configure your api(I am using flask but I will probably change that very soon)
 - tie the gateway to a domain name
 
