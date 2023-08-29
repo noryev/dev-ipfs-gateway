@@ -2,4 +2,4 @@
 
 ## Instructions
 
-Throw this worker.js file into Cloudflare workers and boom! Working Gateway! 
+Throw this worker.js file into Cloudflare workers and boom! Working Racing Gateway! 
