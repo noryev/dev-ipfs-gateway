@@ -14,6 +14,8 @@ async function fetchAndApply(request) {
   const gatewayUrls = [
     `https://w3s.link/ipfs/${cid}`,
     `https://cloudflare-ipfs.com/ipfs/${cid}`,
+    `https://dweb.link/ipfs/${cid}`,
+    `https://ipfs.io/ipfs/${cid}`,
    // `https://ipfs.filebase.io/ipfs${cid}`, - It seems as if they have settings that make this unallowable!
  //   `https://fleek.io/ipfs/${cid}`,
   //  `https://filebase.io/ipfs/${cid}`
