@@ -21,7 +21,7 @@ async function fetchAndApply(request) {
   //  `https://filebase.io/ipfs/${cid}`
   ];
 
-  // More Providers:
+  // More Providers: Added DWeb.link using the schema found here: https://dweb-primer.ipfs.io/classical-web/other-gateways
 
   // Work Arounds for Filebase (Proxy CDN Bockade)
 
