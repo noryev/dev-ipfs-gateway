@@ -10,7 +10,8 @@ async function fetchAndApply(request) {
     return new Response('Invalid request. Please provide a CID.', { status: 400 });
   }
 
-  // Construct the IPFS gateway URLs using the CID.
+  // IPFS Gateways were racing! 
+  
   const gatewayUrls = [
     `https://w3s.link/ipfs/${cid}`,
     `https://cloudflare-ipfs.com/ipfs/${cid}`,
