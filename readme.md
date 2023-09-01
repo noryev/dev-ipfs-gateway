@@ -1,4 +1,5 @@
 # Racing Gateway using Cloudflare Workers
+- Technically a form of Forward Proxy
 
 ## Instructions
 
