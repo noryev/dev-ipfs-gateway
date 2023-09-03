@@ -1,4 +1,4 @@
-# Racing Gateway using Cloudflare Workers[Development Only]
+# Racing IPFS Gateways using Cloudflare Workers[Development Only]
 - Technically a form of Forward Proxy
 
 ## Instructions
