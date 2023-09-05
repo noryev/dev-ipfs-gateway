@@ -8,28 +8,27 @@ const gateways = [
   ];
   
   let completed = false;
-  
-  self.addEventListener('message', event => {
-    const ipfsCID = event.data;
-  
-    gateways.forEach(gatewayURL => {
-      fetch(`${gatewayURL}${ipfsCID}`)
-        .then(response => {
-          // If a valid response and we haven't completed the race yet
-          if (response.ok && !completed) {
-            completed = true;
-            return response.text();  // or response.json() if it's a JSON
-          }
-          throw new Error('Not a valid response or race already completed.');
-        })
-        .then(data => {
-          // Send the data back to the main thread
-          self.postMessage(data);
-        })
-        .catch(error => {
-          // Handle the error if needed
-          console.error('Error fetching from', gatewayURL, error);
-        });
-    });
+
+self.addEventListener('message', event => {
+  const ipfsCID = event.data;
+
+  gateways.forEach(gatewayURL => {
+    fetch(`${gatewayURL}${ipfsCID}`)
+      .then(response => {
+        if (response.ok && !completed) {
+          completed = true;
+          return {
+            content: response.text(),
+            gateway: gatewayURL
+          };
+        }
+        throw new Error('Not a valid response or race already completed.');
+      })
+      .then(data => {
+        self.postMessage(data);
+      })
+      .catch(error => {
+        console.error('Error fetching from', gatewayURL, error);
+      });
   });
-  
+});
