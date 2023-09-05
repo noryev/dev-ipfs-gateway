@@ -1,40 +1,37 @@
 addEventListener('fetch', event => {
-  event.respondWith(fetchAndApply(event.request))
-})
+  event.respondWith(fetchAndApply(event.request));
+});
 
 async function fetchAndApply(request) {
-
   // Extract the CID from the request URL path.
-
   const cid = new URL(request.url).pathname.slice(1);
+  
   if (!cid) {
     return new Response('Invalid request. Please provide a CID.', { status: 400 });
   }
-  // IPFS Gateways were racing! 
+  
   const gatewayUrls = [
     `https://w3s.link/ipfs/${cid}`,
     `https://cloudflare-ipfs.com/ipfs/${cid}`,
     `https://dweb.link/ipfs/${cid}`,
     `https://ipfs.io/ipfs/${cid}`,
-   // `https://ipfs.filebase.io/ipfs${cid}`,    - It seems as if they have settings that make this unallowable! No proxy CDN Allowed.
- //   `https://fleek.io/ipfs/${cid}`,           - Dedicated Gateways only- Look more into how we can make this work.
-  //  `https://filebase.io/ipfs/${cid}`         - Dedicated Gateways only- Look more into how we can make this work. 
+    // Add or remove other gateways as needed
   ];
-
-  // More Providers: Added DWeb.link using the schema found here: https://dweb-primer.ipfs.io/classical-web/other-gateways
-
-  // Work Arounds for Filebase (Proxy CDN Bockade)
-
-  // Modify this section to add custom headers to each fetch request
-
+  
   const customHeaders = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
   };
-  const responses = gatewayUrls.map(url => fetch(url, { method: 'GET', headers: customHeaders }));
+
+  const fetchPromises = gatewayUrls.map(url => 
+    fetch(url, { method: 'GET', headers: customHeaders }).then(response => {
+      if (response.ok) return response;
+      throw new Error('Not a valid response.');
+    })
+  );
 
   try {
-    // Using Promise.race to get the fastest response
-    const fastestResponse = await Promise.race(responses);
+    // Using Promise.race to get the fastest successful response
+    const fastestResponse = await Promise.any(fetchPromises);
 
     // Return the fastest response
     return new Response(fastestResponse.body, {
