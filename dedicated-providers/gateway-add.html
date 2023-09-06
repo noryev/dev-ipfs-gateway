@@ -8,7 +8,8 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            background-color: #181818;
+            color: #e0e0e0;
             margin: 0;
             padding: 0;
             display: flex;
@@ -20,14 +21,14 @@
         .container {
             max-width: 600px;
             width: 90%;
-            background-color: #fff;
+            background-color: #212121;
             padding: 20px;
             border-radius: 5px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
         }
 
         .container h2 {
-            border-bottom: 1px solid #e6e6e6;
+            border-bottom: 1px solid #444;
             padding-bottom: 10px;
             margin-bottom: 20px;
         }
@@ -41,8 +42,10 @@
             width: 100%;
             padding: 10px;
             margin-bottom: 20px;
-            border: 1px solid #e6e6e6;
+            background-color: #313131;
+            border: 1px solid #444;
             border-radius: 4px;
+            color: #e0e0e0;
         }
 
         button {
@@ -65,9 +68,7 @@
 
     <div class="container">
         <h2>Gateway Configuration</h2>
-        <p>Please enter the address of your dedicated gateway below. Our system will configure the analytics proxy gateway on top of it.
-            Currently we support the Spheron and Fleek Dedicated Gateways
-        </p>
+        <p>Please enter the address of your dedicated gateway below. Our system will configure the analytics proxy gateway on top of it.</p>
 
         <form action="YOUR_BACKEND_ENDPOINT_HERE" method="post">
             <label for="gateway-address">Gateway Address:</label>
