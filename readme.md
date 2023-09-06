@@ -7,4 +7,7 @@ Throw this code into a worker.js file into a Cloudflare Worker and boom! Working
 
 Here is an example you can use to see if the proxy gateway is working https://gateway-racing-cc74.deanlaughing.workers.dev/QmZh5s7e4d4kS815aJutJgnm1scQjZdn6sgxjPF8AAJBKm
 
+## Repo Development Notes 
 The files with 'web-worker' within the filename are dedicated to another Racing Gateway that has asynchronysis requests to the multiple gateways instead of doing a simpler version of "racing". 
+
+Instead of using promise.race were using promiss.all- much better handling of the synchronysis request.
