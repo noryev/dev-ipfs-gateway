@@ -33,6 +33,13 @@
             margin-bottom: 20px;
         }
 
+        .supported-note {
+            background-color: #313131;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+
         label {
             display: block;
             margin-bottom: 8px;
@@ -68,7 +75,11 @@
 
     <div class="container">
         <h2>Gateway Configuration</h2>
-        <p>Please enter the address of your dedicated gateway below. Our system will configure the analytics proxy gateway on top of it.</p>
+        <p>Please enter the address of your dedicated gateway below. Our system will configure the analytics proxy gateway to operate with your provider.</p>
+
+        <div class="supported-note">
+            <strong>Supported Gateways:</strong> Fleek.io and Spheron.network
+        </div>
 
         <form action="YOUR_BACKEND_ENDPOINT_HERE" method="post">
             <label for="gateway-address">Gateway Address:</label>
