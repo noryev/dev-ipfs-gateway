@@ -85,8 +85,10 @@
 
     <div class="container">
         <h2>Gateway Configuration</h2>
-        <p>Please enter the address of your dedicated gateway below. Our system will configure the analytics proxy gateway on top of it.</p>
 
+        <!-- AWS Cognito Login Button -->
+        <p>Login using your account and enter the address of your dedicated gateway below. Our system will configure the analytics proxy gateway on top of it.</p>
+        <a href="https://YOUR_DOMAIN_NAME.auth.REGION.amazoncognito.com/login?response_type=token&client_id=YOUR_APP_CLIENT_ID&redirect_uri=YOUR_CALLBACK_URL" class="cognito-login-btn">Login to Leto</a>
         <div class="supported-note">
             <strong>Supported Gateways:</strong> Fleek.io and Spheron.network
         </div>
@@ -97,8 +99,7 @@
             <button type="submit">Submit</button>
         </form>
 
-        <!-- AWS Cognito Login Button -->
-        <a href="https://YOUR_DOMAIN_NAME.auth.REGION.amazoncognito.com/login?response_type=token&client_id=YOUR_APP_CLIENT_ID&redirect_uri=YOUR_CALLBACK_URL" class="cognito-login-btn">Login to Leto</a>
+        
     </div>
 
 </body>
