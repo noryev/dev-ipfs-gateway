@@ -7,7 +7,7 @@
     <title>Gateway Configuration</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #181818;
             color: #e0e0e0;
             margin: 0;
@@ -21,54 +21,67 @@
         .container {
             max-width: 600px;
             width: 90%;
-            background-color: #212121;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            background-color: #252525;
+            padding: 25px;
+            border-radius: 6px;
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.25);
         }
 
         .container h2 {
-            border-bottom: 1px solid #444;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
+            border-bottom: 2px solid #444;
+            padding-bottom: 15px;
+            margin-bottom: 25px;
         }
 
         .supported-note {
-            background-color: #313131;
-            padding: 10px;
+            background-color: #333;
+            padding: 12px;
             margin-bottom: 20px;
-            border-radius: 4px;
+            border-radius: 5px;
+            font-size: 0.9em;
         }
 
         label {
             display: block;
-            margin-bottom: 8px;
+            font-weight: 600;
+            margin-bottom: 10px;
         }
 
         input[type="text"] {
             width: 100%;
-            padding: 10px;
-            margin-bottom: 20px;
-            background-color: #313131;
-            border: 1px solid #444;
-            border-radius: 4px;
-            color: #e0e0e0;
+            padding: 12px;
+            margin-bottom: 25px;
+            background-color: #333;
+            border: 1px solid #555;
+            border-radius: 5px;
+            font-size: 0.95em;
+        }
+
+        button, .cognito-login-btn {
+            padding: 12px 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.2s, transform 0.15s;
         }
 
         button {
             background-color: #007BFF;
             color: white;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.2s;
         }
 
         .cognito-login-btn {
             background-color: #FF9900;
             margin-top: 10px;
-            display: block;
+            display: inline-block;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        button:hover, .cognito-login-btn:hover {
+            transform: scale(0.98);
         }
 
         button:hover {
@@ -84,11 +97,10 @@
 <body>
 
     <div class="container">
-        <h2>Gateway Configuration</h2>
-
-        <!-- AWS Cognito Login Button -->
+        <h2>Dedicated Gateway Configuration</h2>
         <p>Login using your account and enter the address of your dedicated gateway below. Our system will configure the analytics proxy gateway on top of it.</p>
         <a href="https://YOUR_DOMAIN_NAME.auth.REGION.amazoncognito.com/login?response_type=token&client_id=YOUR_APP_CLIENT_ID&redirect_uri=YOUR_CALLBACK_URL" class="cognito-login-btn">Login to Leto</a>
+
         <div class="supported-note">
             <strong>Supported Gateways:</strong> Fleek.io and Spheron.network
         </div>
@@ -98,8 +110,6 @@
             <input type="text" id="gateway-address" name="gateway_address" required>
             <button type="submit">Submit</button>
         </form>
-
-        
     </div>
 
 </body>
