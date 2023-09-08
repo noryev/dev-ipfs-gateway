@@ -15,6 +15,7 @@ async function fetchAndApply(request) {
     `https://cloudflare-ipfs.com/ipfs/${cid}`,
     `https://dweb.link/ipfs/${cid}`,
     `https://ipfs.io/ipfs/${cid}`,
+    `https://${cid}ipfs.sphn.link/`,
     // Add or remove other gateways as needed
   ];
   
