@@ -5,7 +5,7 @@ addEventListener('fetch', event => {
 async function fetchAndApply(request) {
   // Extract the CID from the request URL path.
   const cid = new URL(request.url).pathname.slice(1);
-  const gatewayaddress = 
+  const gatewayaddr = 
   
   if (!cid) {
     return new Response('Invalid request. Please provide a CID.', { status: 400 });
@@ -16,7 +16,7 @@ async function fetchAndApply(request) {
     `https://cloudflare-ipfs.com/ipfs/${cid}`,
     `https://dweb.link/ipfs/${cid}`,
     `https://ipfs.io/ipfs/${cid}`,
-    `https://${cid}ipfs.sphn.link/`,
+    `https://${gatewayaddr}, ${cid}ipfs.sphn.link/`,
    // `https://${cid}ipfs.sphn.link/`, - Cannot use this addr, Proxy CDN not allowed
     // Add or remove other gateways as needed
   ];
