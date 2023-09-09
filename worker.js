@@ -17,7 +17,7 @@ async function fetchAndApply(request) {
     `https://dweb.link/ipfs/${cid}`,
     `https://ipfs.io/ipfs/${cid}`,
     `https://${cid}ipfs.sphn.link/`,
-    `https://${cid}ipfs.sphn.link/`,
+   // `https://${cid}ipfs.sphn.link/`, - Cannot use this addr, Proxy CDN not allowed
     // Add or remove other gateways as needed
   ];
   
