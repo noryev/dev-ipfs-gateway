@@ -5,7 +5,9 @@ addEventListener('fetch', event => {
 async function fetchAndApply(request) {
   // Extract the CID from the request URL path.
   const cid = new URL(request.url).pathname.slice(1);
-  const gatewayaddr = 
+
+  // Assuming gatewayaddr is a domain for an IPFS gateway
+  const gatewayaddr = 'your-ipfs-gateway-domain.com'; // replace with your actual domain
   
   if (!cid) {
     return new Response('Invalid request. Please provide a CID.', { status: 400 });
@@ -16,8 +18,8 @@ async function fetchAndApply(request) {
     `https://cloudflare-ipfs.com/ipfs/${cid}`,
     `https://dweb.link/ipfs/${cid}`,
     `https://ipfs.io/ipfs/${cid}`,
-    `https://${gatewayaddr}, ${cid}ipfs.sphn.link/`,
-   // `https://${cid}ipfs.sphn.link/`, - Cannot use this addr, Proxy CDN not allowed
+    `https://${gatewayaddr}/ipfs/${cid}`,
+    // `https://${cid}ipfs.sphn.link/` - Cannot use this addr, Proxy CDN not allowed
     // Add or remove other gateways as needed
   ];
   
@@ -33,14 +35,14 @@ async function fetchAndApply(request) {
   );
 
   try {
-    // Using Promise.race to get the fastest successful response
-    const fastestResponse = await Promise.any(fetchPromises);
+    // Using Promise.any to get the first successful response
+    const firstSuccessfulResponse = await Promise.any(fetchPromises);
 
     // Return the fastest response
-    return new Response(fastestResponse.body, {
-      status: fastestResponse.status,
-      statusText: fastestResponse.statusText,
-      headers: fastestResponse.headers
+    return new Response(firstSuccessfulResponse.body, {
+      status: firstSuccessfulResponse.status,
+      statusText: firstSuccessfulResponse.statusText,
+      headers: firstSuccessfulResponse.headers
     });
   } catch (error) {
     return new Response('Error fetching from IPFS gateways.', { status: 500 });
